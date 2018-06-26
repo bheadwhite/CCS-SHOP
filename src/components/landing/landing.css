@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: block;
+}
+.landing {
+  display: flex;
+  height: 100vh;
+  justify-content: space-around;
+  padding: 10px;
+  flex-wrap: wrap;
+  margin-top: 61px;
+}
+
+.item {
+  width: 174px;
+  height: 245px;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+}
+div.item.graphics img {
+  min-height: 260px;
+}
+img {
+  border: 0;
+  vertical-align: top;
+  width: 100%;
+  max-width: 240px;
+  max-height: 240px;
+  margin: 0 auto;
+}
+p {
+  padding-top: 10px;
+  line-height: 20px;
+}
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+.productDetails strong {
+  font-size: 19px;
+}
+
+/* navbar */
+
+.headerContainer {
+  justify-content: space-between;
+  min-width: 100%;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid #00a4f0;
+}
+.headerContainer,
+.headerContainer div {
+  display: flex;
+  align-items: center;
+}
+.headerContainer div {
+  width: 100px;
+}
+.headerContainer > div img {
+  max-height: 25px;
+  max-width: 25px;
+}
+.headerContainer .right img {
+  min-height: 30px;
+  min-width: 33px;
+}
+.headerContainer img {
+  max-height: 50px;
+  max-width: 106px;
+}
+
+/* search */
+.App div.searchContainer.up {
+display: none;
+}
+
+.searchContainer {
+  height: 70px;
+  display: flex;
+  background: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  align-items: center;
+  border-bottom: 1px solid #00a4f0;
+  justify-content: space-between
+}
+.searchContainer img {
+max-width: 25px;
+max-height: 25px;
+margin: 20px;
+}
+
+.searchContainer input {
+  height: 40px;
+  font-size: 20px;
+}
+
+
+/* banners */
+
+.shippingBanner,
+.shippingBanner > img {
+  min-width: 100vw;
+}
+
+/* Title and filter */
+
+.filter,
+.filter button {
+  display: flex;
+  width: 100%;
+  text-transform: uppercase;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter button {
+  font-size: 18px;
+  border: 2px solid darkgrey;
+  background: white;
+  padding: 2px 25px;
+  color: darkgrey;
+}
+.filter {
+  height: 67px;
+}
+.filter p {
+  padding: 0;
+}
+
+/* side bar */
+
+.Sidebar {
+  margin-right: auto;
+  width: 311px;
+  position: fixed;
+  left: -10px;
+}
+.menuIcon img {
+  height: 22px;
+  width: 21px;
+  margin-right: 10px;
+  margin-left: 0;
+}
+
+.menu {
+  background: #e1e1e1;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 0;
+  padding-left: 40px;
+
+}
+.socialMedia img {
+  height: 28px;
+  width: 28px;
+}
+.socialMedia {
+  display: flex;
+  flex-direction: column;
+  background: #b9b9b9;
+  padding: 30px;
+  padding-bottom: 15px;
+}
+.socialMedia div {
+  display: flex;
+  text-transform: uppercase;
+  background: #b9b9b9;
+  color: white;
+  font-size: 8px;
+  font-weight: 900;
+  justify-content: center;
+}
+.socialMedia p {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.App .landing .hidden {
+  left: -380px;
+}
