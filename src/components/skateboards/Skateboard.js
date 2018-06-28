@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./../landing/landing.css";
 import Skateboards from "./skateboards";
-import Navbar from "./../nav/mobile/navbar";
-import Banners from "./../nav/mobile/shippingAndExtension";
-import Filter from "./../nav/mobile/Filter";
-import Sidebar from "./../nav/mobile/Sidebar";
-import Search from "./../nav/mobile/Search";
+import Navbar from "./../nav/navbar";
+import Banners from "./../nav/shippingAndExtension";
+import Filter from "./../nav/Filter";
+import Sidebar from "./../nav/Sidebar";
+import Search from "./../nav/Search";
 import { connect } from "react-redux";
 import { setMenu } from "./../../redux/navbar";
 import { setSearch } from "./../../redux/navbar";
@@ -21,7 +21,8 @@ class Skateboard extends Component {
   componentDidMount() {
     axios.get("/api/getSkate", console.log("loading mount")).then(res => {
       console.log("comp did mount");
-      this.setState({ inventory: res.data });
+      console.log(res.data);
+      this.setState({ inventory: res.data});
     });
   }
   render() {

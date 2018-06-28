@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getCart } from "./../../../redux/navbar";
+import {Link} from 'react-router-dom'
 
 function Navbar(props) {
-  const { getCart } = props;
   let imgSrc = props.menu
     ? "https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/menu-button-close.1529467876.png"
     : "https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/menu-button.1529467876.png";
@@ -35,13 +34,10 @@ function Navbar(props) {
           src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/catalog-button-mobile.1529467876.jpg"
           alt="catalog"
         />
-        <img
-          onClick={() => {
-            console.log(props.cart);
-          }}
+        <Link to="/api/cart"><img
           src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/mobile-cart.1529467876.png"
           alt="cart"
-        />
+        /></Link>
       </div>
     </div>
   );
@@ -52,6 +48,5 @@ function mapStateToProps(state) {
   };
 }
 export default connect(
-  mapStateToProps,
-  { getCart }
+  mapStateToProps
 )(Navbar);

@@ -1,1 +1,1 @@
-select * from inventory
+select * from inventory;
