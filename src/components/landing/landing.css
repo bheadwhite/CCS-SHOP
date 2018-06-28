@@ -79,7 +79,7 @@ p {
 
 /* search */
 .App div.searchContainer.up {
-display: none;
+  top: -100px;
 }
 
 .searchContainer {
@@ -91,19 +91,19 @@ display: none;
   width: 100%;
   align-items: center;
   border-bottom: 1px solid #00a4f0;
-  justify-content: space-between
+  justify-content: space-between;
+  transition: 0.5s;
 }
 .searchContainer img {
-max-width: 25px;
-max-height: 25px;
-margin: 20px;
+  max-width: 25px;
+  max-height: 25px;
+  margin: 20px;
 }
 
 .searchContainer input {
   height: 40px;
   font-size: 20px;
 }
-
 
 /* banners */
 
@@ -143,6 +143,7 @@ margin: 20px;
   width: 311px;
   position: fixed;
   left: -10px;
+  transition: 0.5s;
 }
 .menuIcon img {
   height: 22px;
@@ -161,7 +162,6 @@ margin: 20px;
   align-items: center;
   padding: 20px 0;
   padding-left: 40px;
-
 }
 .socialMedia img {
   height: 28px;

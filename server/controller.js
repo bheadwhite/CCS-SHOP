@@ -1,11 +1,15 @@
 module.exports = {
-    getSkate: (req, res, next) => {
-        const db = req.app.get('db');
+  getSkate: (req, res, next) => {
+    const db = req.app.get("db");
 
-        db.getSkate().then(result => res.status(200).send(result))
-        .catch(err => {
-            console.log(err);
-            res.status(501).send(err)
-        })
-    }
-}
+    db.getSkate()
+      .then(result => res.status(200).send(result))
+      .catch(err => {
+        console.log(err);
+        res.status(501).send(err);
+      });
+  },
+  getCart: (req, res, next) => {
+    res.send(req.session.cart);
+  }
+};
