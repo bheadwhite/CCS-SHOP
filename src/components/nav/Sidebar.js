@@ -17,7 +17,7 @@ export default function Sidebar(props) {
         <img
           src="https://shop.ccs.com/media/wysiwyg/mobile-nav-account.gif"
           alt="login icon"
-        />{" "}
+        />
         <strong>Log In / Sign Up</strong>
       </div>
       <div className="menu">

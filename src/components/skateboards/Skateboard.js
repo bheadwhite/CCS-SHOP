@@ -3,15 +3,9 @@ import axios from "axios";
 import "./../landing/landing.css";
 import Skateboards from "./skateboards";
 import Navbar from "./../nav/navbar";
-import Banners from "./../nav/shippingAndExtension";
-import Filter from "./../nav/Filter";
-import Sidebar from "./../nav/Sidebar";
-import Search from "./../nav/Search";
-import { connect } from "react-redux";
-import { setMenu } from "./../../redux/navbar";
-import { setSearch } from "./../../redux/navbar";
+import Filter from "./../nav/Filter"
 
-class Skateboard extends Component {
+export default class Skateboard extends Component {
   constructor() {
     super();
     this.state = {
@@ -37,39 +31,12 @@ class Skateboard extends Component {
         />
       </div>
     );
-    const { setMenu, setSearch } = this.props;
     return (
       <div className="landing">
-        <Navbar
-          menu={this.props.menu}
-          onClick={() => {
-            setMenu(!this.props.menu);
-          }}
-          onClickSearch={() => {
-            setSearch(!this.props.search);
-          }}
-        />
-        <Search
-          search={this.props.search}
-          onClick={() => {
-            setSearch(!this.props.search);
-          }}
-        />
-        <Sidebar menu={this.props.menu} />
-        <Banners />
+        <Navbar />
         <Filter />
         {products}
       </div>
     );
   }
 }
-function mapStateToProps(state) {
-  return {
-    menu: state.navbar.menu,
-    search: state.navbar.search
-  };
-}
-export default connect(
-  mapStateToProps,
-  { setMenu, setSearch }
-)(Skateboard);
