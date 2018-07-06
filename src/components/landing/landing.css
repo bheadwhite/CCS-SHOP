@@ -1,8 +1,13 @@
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  list-style-type: none;
 }
-
+a:visited {
+  text-decoration: none;
+  color: black;
+}
 body {
   display: block;
 }
@@ -48,33 +53,39 @@ p {
 /* navbar */
 
 .headerContainer {
+  display: flex;
   justify-content: space-between;
-  min-width: 100%;
   padding: 10px;
   position: fixed;
   top: 0;
   background: white;
   border-bottom: 1px solid #00a4f0;
+  box-sizing: border-box;
+  width: 100%;
 }
-.headerContainer,
 .headerContainer div {
   display: flex;
   align-items: center;
 }
-.headerContainer div {
-  width: 100px;
-}
-.headerContainer > div img {
-  max-height: 25px;
-  max-width: 25px;
+.headerContainer img {
+  max-width: 100px;
+  max-height: 50px;
 }
 .headerContainer .right img {
-  min-height: 30px;
-  min-width: 33px;
-}
-.headerContainer img {
   max-height: 50px;
-  max-width: 106px;
+  max-width: 40px;
+}
+.headerContainer .left img {
+  max-height: 26px;
+  max-width: 26px;
+}
+.left {
+  width: 100px;
+  margin-left: 5px;
+}
+.right {
+  width: 100px;
+  margin-right: 10px;
 }
 
 /* search */
@@ -190,4 +201,22 @@ p {
 }
 .App .landing .hidden {
   left: -380px;
+}
+
+/*LandingPage*/
+.main .images {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.main #images img {
+  min-width: 100%;
+  margin-top: 5px;
+}
+
+#images {
+  min-width: 100vw;
+  margin-top: 5px;
+}
+ul {
+  display: flex;
 }

@@ -30,10 +30,12 @@ function Navbar(props) {
             alt="search logo"
           />
         </div>
-        <img
-          src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/logo-mobile.1529467876.png"
-          alt="css logo"
-        />
+        <Link to="/">
+          <img
+            src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/logo-mobile.1529467876.png"
+            alt="css logo"
+          />
+        </Link>
         <div className="right">
           <img
             src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/catalog-button-mobile.1529467876.jpg"
@@ -47,8 +49,13 @@ function Navbar(props) {
           </Link>
         </div>
       </div>
-      <Search search={props.search} onClick={()=>{setSearch()}}/>
-      <Sidebar menu={props.menu}/>
+      <Search
+        search={props.search}
+        onClick={() => {
+          setSearch();
+        }}
+      />
+      <Sidebar menu={props.menu} />
       <Banners />
     </div>
   );
