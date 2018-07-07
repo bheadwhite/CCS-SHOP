@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./../landing/landing.css";
-import Skateboards from "./skateboards";
+import Items from "./Items";
 import Navbar from "./../nav/navbar";
 import Filter from "./../nav/Filter"
 
@@ -12,16 +12,14 @@ export default class Skateboard extends Component {
       inventory: []
     };
   }
-  componentDidMount() {
-    axios.get("/api/getSkate", console.log("loading mount")).then(res => {
-      console.log("comp did mount");
-      console.log(res.data);
+  componentDidMount(){
+    axios.get("/api/getSkate").then(res => {
       this.setState({ inventory: res.data});
     });
   }
   render() {
     const products = this.state.inventory.map((product, i) => (
-      <Skateboards product={product} key={i} />
+      <Items product={product} key={i} />
     ));
     products.unshift(
       <div className="item graphics" key="f">

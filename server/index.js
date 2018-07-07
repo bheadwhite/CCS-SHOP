@@ -8,7 +8,7 @@ const controller = require("./controller");
 const session = require("express-session");
 
 app.use(bodyParser.json());
-app.use(express.static(`${__dirname}/../build`))
+app.use(express.static(`${__dirname}/../build`));
 app.use(
   session({
     secret: process.env.SECRET,
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   if (!req.session.cart) {
     req.session.cart = [];
   }
-  next()
+  next();
 });
 massive(process.env.CONNECTIONSTRING).then(db => {
   app.set("db", db);
@@ -28,12 +28,17 @@ massive(process.env.CONNECTIONSTRING).then(db => {
 });
 app.get("/api/getSkate", controller.getSkate);
 app.get("/api/cart", controller.getCart);
+app.get("/api/getItem/:id", controller.getItem);
+app.get("/api/search/item", controller.getSearch);
+
 app.post("/api/cart", (req, res) => {
   req.session.cart.push(req.body);
   res.send(req.session.cart);
 });
 app.delete("/api/cart/:id", (req, res) => {
-  console.log("your going to delete something now");
+  let index = req.session.cart.findIndex(item => item["id"] === req.params);
+  req.session.cart.splice(index, 1);
+  res.send(req.session.cart);
 });
 
 port = 3001;

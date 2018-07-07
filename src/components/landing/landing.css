@@ -220,3 +220,28 @@ p {
 ul {
   display: flex;
 }
+
+.checkoutNamePrice {
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+  align-items: center;
+  border: 2px solid blue;
+  padding: 10px;
+}
+.checkoutPrice {
+  font-weight: 700;
+  font-size: 19px;
+}
+.checkoutNamePrice div {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100%;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+.checkoutNamePrice img {
+  max-height: 100%;
+}

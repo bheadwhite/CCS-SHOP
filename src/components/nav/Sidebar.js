@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom'
-import {setMenu, setSearch} from "./../../redux/navbar";
+import {setMenu} from "./../../redux/navbar";
 import {connect} from 'react-redux'
 
 function Sidebar(props) {

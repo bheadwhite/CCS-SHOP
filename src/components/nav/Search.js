@@ -10,7 +10,9 @@ export default function Search(props){
           alt="search logo"
         />
       </div>
+      
       <input type="text" placeholder="Search" />
+
       <div className="right">
         <img onClick={()=>{props.onClick(!props.search)}}
           src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/menu-button-close.1529467876.png"
