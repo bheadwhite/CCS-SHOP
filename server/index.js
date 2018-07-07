@@ -7,6 +7,8 @@ const app = express();
 const controller = require("./controller");
 const session = require("express-session");
 
+app.use(bodyParser.json());
+app.use(express.static(`${__dirname}/../build`))
 app.use(
   session({
     secret: process.env.SECRET,
@@ -20,7 +22,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-app.use(bodyParser.json());
 massive(process.env.CONNECTIONSTRING).then(db => {
   app.set("db", db);
   console.log("db is connected");

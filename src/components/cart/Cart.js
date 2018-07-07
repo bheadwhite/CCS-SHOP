@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import Navbar from './../nav/navbar'
 
 export default class Cart extends Component {
   render() {
-    return <div>yo this is the cart</div>;
+    return <div className='landing'><Navbar /></div>;
   }
 }

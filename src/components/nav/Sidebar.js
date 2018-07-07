@@ -1,6 +1,10 @@
 import React from "react";
+import {Link} from 'react-router-dom'
+import {setMenu, setSearch} from "./../../redux/navbar";
+import {connect} from 'react-redux'
 
-export default function Sidebar(props) {
+function Sidebar(props) {
+  const {setMenu} = props
   let hidden = props.menu? "Sidebar" : "Sidebar hidden"
   return (
     <div className={hidden}>
@@ -20,9 +24,9 @@ export default function Sidebar(props) {
         />
         <strong>Log In / Sign Up</strong>
       </div>
-      <div className="menu">
+      <Link to="/api/skateboards" onClick={()=>{setMenu(!props.menu)}}><div className="menu">
         <strong>Skateboards</strong>
-      </div>
+      </div></Link>
       <div className="menu">
         <strong>Customer Service</strong>
       </div>
@@ -54,3 +58,10 @@ export default function Sidebar(props) {
     </div>
   );
 }
+function mapStateToProps(state){
+  return {
+    menu: state.navbar.menu
+  }
+}
+
+export default connect(mapStateToProps,{setMenu})(Sidebar)
