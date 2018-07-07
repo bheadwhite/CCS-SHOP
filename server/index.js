@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   if (!req.session.cart) {
     req.session.cart = [];
   }
-  next()
+  next();
 });
 app.use(bodyParser.json());
 massive(process.env.CONNECTIONSTRING).then(db => {
