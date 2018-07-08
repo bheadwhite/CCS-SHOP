@@ -3,18 +3,20 @@ import axios from "axios";
 import "./../landing/landing.css";
 import Items from "./Items";
 import Navbar from "./../nav/navbar";
-import Filter from "./../nav/Filter"
+import Filter from "./../nav/Filter";
+import {connect} from 'react-redux'
 
-export default class Skateboard extends Component {
-  constructor() {
-    super();
+class Skateboard extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       inventory: []
     };
   }
-  componentDidMount(){
+  componentDidMount() {
     axios.get("/api/getSkate").then(res => {
-      this.setState({ inventory: res.data});
+      // this.props.inventory ? this.setState({inventory: this.props.inventory}):
+      this.setState({ inventory: res.data });
     });
   }
   render() {
@@ -38,3 +40,9 @@ export default class Skateboard extends Component {
     );
   }
 }
+function mapStateToProps(state){
+  return {
+    inventory: state.inventory
+  }
+}
+export default connect(mapStateToProps, {})(Skateboard)

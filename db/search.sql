@@ -1,0 +1,1 @@
+select * from inventory where name ilike $1

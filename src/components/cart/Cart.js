@@ -21,7 +21,6 @@ export default class Cart extends Component {
   componentDidMount() {
     axios.get("/api/cart").then(response => {
       this.setState({ item: response.data });
-      console.log(response.data);
     });
   }
   render() {

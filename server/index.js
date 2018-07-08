@@ -29,7 +29,7 @@ massive(process.env.CONNECTIONSTRING).then(db => {
 app.get("/api/getSkate", controller.getSkate);
 app.get("/api/cart", controller.getCart);
 app.get("/api/getItem/:id", controller.getItem);
-app.get("/api/search/item", controller.getSearch);
+app.get("/api/search", controller.getSearch);
 
 app.post("/api/cart", (req, res) => {
   req.session.cart.push(req.body);

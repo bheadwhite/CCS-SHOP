@@ -1,11 +1,13 @@
 const GET_MENU = "GET_MENU";
 const GET_SEARCH = "GET_SEARCH";
 const GET_CART = "GET_CART";
+const GET_INVENTORY = "GET_INVENTORY"
 
 const initialState = {
   menu: false,
   search: false,
-  cart: ["wasssup buddy", "heyyyyyyy"]
+  cart: ["wasssup buddy", "heyyyyyyy"],
+  inventory: []
 };
 
 export default function reducer(state = initialState, action) {
@@ -16,6 +18,8 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { search: action.payload });
     case GET_CART:
       return Object.assign({}, state, { cart: action.payload });
+    case GET_INVENTORY:
+      return Object.assign({}, state, {inventory: action.payload})
     default:
       return state;
   }
@@ -38,4 +42,10 @@ export function getCart(data) {
     type: GET_CART,
     payload: data
   };
+}
+export function getInventory(data){
+  return {
+    type: GET_INVENTORY,
+    payload: data
+  }
 }
