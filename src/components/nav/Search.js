@@ -10,35 +10,33 @@ class Search extends Component {
       search: ""
     };
   }
+
   updateInventory() {
-    console.log('updateInventory hit')
-    axios.get(`/api/search?q=${this.state.search}`).then(results => {console.log(results.data),
-      this.props.getInventory(results.data)
+    axios.get(`/api/search?q=${this.state.search}`).then(results => {
+      this.props.getInventory(results.data);
     });
   }
   render() {
     let up = this.props.search ? "searchContainer" : "searchContainer up";
     return (
       <div className={up}>
-        <div className="left">
-          <img
-            onClick={() => {
-              this.updateInventory();
-              console.log(this.state.search);
+          <div className="left">
+              <img
+                onClick={() => {
+                  this.updateInventory(this.state.search);
+                }}
+                src="https://cdn.ccs.com/skin/frontend/enterprise/mobile/images/bkg_search.1529467876.png"
+                alt="search logo"
+              />
+          </div>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={this.state.search}
+            onChange={e => {
+              this.setState({ search: e.target.value });
             }}
-            src="https://cdn.ccs.com/skin/frontend/enterprise/mobile/images/bkg_search.1529467876.png"
-            alt="search logo"
           />
-        </div>
-
-        <input
-          type="text"
-          placeholder="Search..."
-          value={this.state.search}
-          onChange={e => {
-            this.setState({ search: e.target.value });
-          }}
-        />
         <div className="right">
           <img
             onClick={() => {
@@ -63,5 +61,3 @@ export default connect(
   { getInventory }
 )(Search);
 
-//bring from store value of
-//send to store

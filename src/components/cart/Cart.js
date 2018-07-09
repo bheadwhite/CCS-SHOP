@@ -11,9 +11,7 @@ export default class Cart extends Component {
     };
   }
   removeItem(id) {
-    console.log("delete is firing");
     axios.delete(`/api/cart/${id}`).then(resp => {
-      console.log(resp.data);
       this.setState({ item: resp.data });
     });
   }
@@ -24,10 +22,10 @@ export default class Cart extends Component {
     });
   }
   render() {
-    let subtotal = this.state.item.reduce((sub,next) => {
-      return sub+ next.price
-    }, 0)
-    subtotal = (subtotal/100).toFixed(2)
+    let subtotal = this.state.item.reduce((sub, next) => {
+      return sub + next.price;
+    }, 0);
+    subtotal = (subtotal / 100).toFixed(2);
     const products = this.state.item.map((product, key) => {
       const price = (product.price / 100).toFixed(2);
       return (
@@ -48,8 +46,7 @@ export default class Cart extends Component {
                     this.removeItem(product.id);
                   }}
                 >
-                  {" "}
-                  REMOVE{" "}
+                  REMOVE
                 </button>
               </div>
               <div>TOTAL</div>
