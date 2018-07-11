@@ -17,7 +17,7 @@ body {
   justify-content: space-around;
   padding: 10px;
   flex-wrap: wrap;
-  margin-top: 61px;
+  margin-top: 60px;
 }
 
 .item {
@@ -89,12 +89,12 @@ p {
 }
 
 /* search */
-.App div.searchContainer.up {
+form.searchContainer.up {
   top: -100px;
 }
 
 .searchContainer {
-  height: 70px;
+  height: 69px;
   display: flex;
   background: white;
   position: fixed;

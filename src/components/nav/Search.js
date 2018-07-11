@@ -10,18 +10,23 @@ class Search extends Component {
       search: ""
     };
   }
-
   updateInventory() {
     axios.get(`/api/search?q=${this.state.search}`).then(results => {
-      this.props.getInventory(results.data);
+      this.props.getInventory(results.data, this.state.search);
+
     });
   }
+  handleSubmit(e){
+    e.preventDefault()
+  }
   render() {
+    console.log(this.props)
     let up = this.props.search ? "searchContainer" : "searchContainer up";
     return (
-      <div className={up}>
+      <div>
+          <form className={up} onSubmit={this.handleSubmit}>
           <div className="left">
-              <img
+              <input type='image'
                 onClick={() => {
                   this.updateInventory(this.state.search);
                 }}
@@ -38,7 +43,7 @@ class Search extends Component {
             }}
           />
         <div className="right">
-          <img
+          <input type='image'
             onClick={() => {
               this.props.onClick(!this.props.search);
               this.setState({ search: "" });
@@ -47,13 +52,14 @@ class Search extends Component {
             alt="exit"
           />
         </div>
+        </form>
       </div>
     );
   }
 }
 function mapStateToProps(state) {
   return {
-    inventory: state.inventory
+    inventory: state.navbar.inventory
   };
 }
 export default connect(

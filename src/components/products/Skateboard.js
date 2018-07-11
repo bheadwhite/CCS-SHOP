@@ -10,12 +10,17 @@ class Skateboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inventory: []
+      inventory: [],
+      run: false
     };
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.inventory !== this.props.inventory) {
-      this.setState({ inventory: nextProps.inventory });
+      this.setState({ inventory: nextProps.inventory, run: false});
+      this.props.history.push({
+        pathname: `/skateboards`,
+        search: `q=${nextProps.query}`
+      })
     }
   }
 
@@ -25,6 +30,12 @@ class Skateboard extends Component {
     });
   }
   render() {
+    if(!this.props.location.search && this.state.run === false){
+      axios.get("/api/getSkate").then(res => {
+        this.setState({inventory: res.data,
+        run: true})
+      })
+    }
     let products = this.state.inventory;
     if (this.state.inventory.length > 0) {
       products = this.state.inventory.map((product, i) => (
@@ -50,7 +61,8 @@ class Skateboard extends Component {
 }
 function mapStateToProps(state) {
   return {
-    inventory: state.navbar.inventory
+    inventory: state.navbar.inventory,
+    query: state.navbar.query
   }
 }
 export default connect(

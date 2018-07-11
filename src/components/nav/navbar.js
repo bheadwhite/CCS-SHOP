@@ -41,7 +41,7 @@ function Navbar(props) {
             src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/catalog-button-mobile.1529467876.jpg"
             alt="catalog"
           />
-          <Link to="/api/cart">
+          <Link to="/cart">
             <img
               src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/mobile-cart.1529467876.png"
               alt="cart"

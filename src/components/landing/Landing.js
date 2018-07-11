@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import Navbar from "./../nav/navbar";
+import { connect } from "react-redux";
 
-export default class Landing extends Component {
+class Landing extends Component {
   render() {
+    if(this.props.query){
+      this.props.history.push({
+        pathname: '/skateboards',
+        search: `q=${this.props.query}`
+      })
+    }
     return (
       <div className="landing main">
         <Navbar />
         <div id="images" className="images">
-        <img
-          src="https://cdn.ccs.com/media/wysiwyg/nike_HPBdesktop-061918.1529446759.jpg"
-          alt="nike ad"
-        />
+          <img
+            src="https://cdn.ccs.com/media/wysiwyg/nike_HPBdesktop-061918.1529446759.jpg"
+            alt="nike ad"
+          />
         </div>
         <ul className="logos">
           <li>
@@ -70,3 +77,12 @@ export default class Landing extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    query: state.navbar.query
+  };
+}
+export default connect(
+  mapStateToProps,
+  {}
+)(Landing);
