@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import Navbar from "./../nav/navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import {connect} from 'react-redux'
+import {setQuantity} from './../../redux/navbar'
 
-export default class Cart extends Component {
-  constructor() {
-    super();
+class Cart extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       item: []
     };
   }
   removeItem(id) {
     axios.delete(`/api/cart/${id}`).then(resp => {
-      this.setState({ item: resp.data });
+      this.setState({ item: resp.data.cart });
     });
   }
 
@@ -20,6 +22,12 @@ export default class Cart extends Component {
     axios.get("/api/cart").then(response => {
       this.setState({ item: response.data });
     });
+  }
+  setCartQuantity() {
+    axios.get("/api/cartQuantity").then(res => {
+      this.props.setQuantity(res.data.cartQuantity)
+    }
+    )
   }
   render() {
     let subtotal = this.state.item.reduce((sub, next) => {
@@ -44,6 +52,7 @@ export default class Cart extends Component {
                 <button
                   onClick={() => {
                     this.removeItem(product.id);
+                    this.setCartQuantity()
                   }}
                 >
                   REMOVE
@@ -62,7 +71,15 @@ export default class Cart extends Component {
         <div>SHOPPING CART</div>
         {products}
         <div>Subtotal: ${subtotal}</div>
+        <Link to="/checkout">
+          <button>checkout</button>
+        </Link>
       </div>
     );
   }
 }
+function mapStateToProps(state){
+  return {
+    quantity: state.navbar.quantity}
+}
+export default connect(mapStateToProps, {setQuantity})(Cart)

@@ -8,6 +8,10 @@ a:visited {
   text-decoration: none;
   color: black;
 }
+input[type='text'] {
+font-size: 25px;
+border-bottom: 1px solid black;
+}
 body {
   display: block;
 }
@@ -51,7 +55,9 @@ p {
 }
 
 /* navbar */
-
+.navbar {
+  height: 87px;
+}
 .headerContainer {
   display: flex;
   justify-content: space-between;
@@ -244,4 +250,17 @@ ul {
 }
 .checkoutNamePrice img {
   max-height: 100%;
+}
+/* placeOrder */
+
+div.placeOrder {
+ background: #00A4F0;
+ height: 40px;
+ width: 300px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ color: white;
+ text-shadow: -.3px .3px black;
+ margin: 0 auto;
 }

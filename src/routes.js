@@ -4,6 +4,7 @@ import Skateboard from "./components/products/Skateboard";
 import Cart from "./components/cart/Cart";
 import Landing from "./components/landing/Landing"
 import QuickView from "./components/products/QuickView"
+import Checkout from "./components/cart/Checkout";
 
 export default (
   <div>
@@ -11,5 +12,6 @@ export default (
     <Route path="/skateboards" component={Skateboard} />
     <Route path="/cart" component={Cart} />
     <Route path="/item/:id" component={QuickView} />
+    <Route path="/checkout" component={Checkout} />
   </div>
 );

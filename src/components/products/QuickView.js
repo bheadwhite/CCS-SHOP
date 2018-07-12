@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import Nav from "./../nav/navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { setQuantity } from "./../../redux/navbar";
 
-export default class QuickView extends Component {
+class QuickView extends Component {
   constructor() {
     super();
     this.state = {
@@ -16,6 +18,7 @@ export default class QuickView extends Component {
       }
     };
   }
+  
   componentDidMount() {
     axios.get(`/api/getItem/${this.props.match.params.id}`).then(response => {
       this.setState({ item: response.data[0] });
@@ -24,12 +27,17 @@ export default class QuickView extends Component {
   addItemToCart(id) {
     axios.post(`/api/cart`, this.state.item);
   }
+  setCartQuantity() {
+    axios.get("/api/cartQuantity").then(res => {
+      this.props.setQuantity(res.data.cartQuantity)
+    }
+    )
+  }
   render() {
-    console.log(this.props);
     return (
       <div className="landing">
         <Nav />
-        <Link to="/api/skateboards">
+        <Link to="/skateboards">
           <button>Back</button>
         </Link>
         <img src={this.state.item.img} alt={this.state.item.name} />
@@ -43,6 +51,7 @@ export default class QuickView extends Component {
           <button
             onClick={() => {
               this.addItemToCart(this.state.item.id);
+              this.setCartQuantity();
             }}
           >
             add Item to Cart
@@ -52,3 +61,12 @@ export default class QuickView extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    quantity: state.navbar.quantity
+  };
+}
+export default connect(
+  mapStateToProps,
+  { setQuantity }
+)(QuickView);

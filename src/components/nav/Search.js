@@ -20,7 +20,6 @@ class Search extends Component {
     e.preventDefault()
   }
   render() {
-    console.log(this.props)
     let up = this.props.search ? "searchContainer" : "searchContainer up";
     return (
       <div>

@@ -16,11 +16,11 @@ class Skateboard extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.inventory !== this.props.inventory) {
-      this.setState({ inventory: nextProps.inventory, run: false});
+      this.setState({ inventory: nextProps.inventory, run: false });
       this.props.history.push({
         pathname: `/skateboards`,
         search: `q=${nextProps.query}`
-      })
+      });
     }
   }
 
@@ -29,12 +29,15 @@ class Skateboard extends Component {
       this.setState({ inventory: res.data });
     });
   }
+
   render() {
-    if(!this.props.location.search && this.state.run === false){
+    if (!this.props.location.search && this.state.run === false) {
       axios.get("/api/getSkate").then(res => {
-        this.setState({inventory: res.data,
-        run: true})
-      })
+        this.setState({
+          inventory: res.data,
+          run: true
+        });
+      });
     }
     let products = this.state.inventory;
     if (this.state.inventory.length > 0) {
@@ -63,8 +66,6 @@ function mapStateToProps(state) {
   return {
     inventory: state.navbar.inventory,
     query: state.navbar.query
-  }
+  };
 }
-export default connect(
-  mapStateToProps
-)(Skateboard);
+export default connect(mapStateToProps)(Skateboard);

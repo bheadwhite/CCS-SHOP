@@ -7,7 +7,7 @@ class Items extends Component {
     const {product} = this.props
     const price = (product.price / 100).toFixed(2);
     return (
-      <Link to={`/api/item/${product.id}`} >
+      <Link to={`/item/${product.id}`} >
         <div className="item">
           <div className="productImage">
             <img src={product.img} alt={product.name} />

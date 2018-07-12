@@ -19,6 +19,7 @@ app.use(
 app.use((req, res, next) => {
   if (!req.session.cart) {
     req.session.cart = [];
+    req.session.cartQuantity = 0;
   }
   next();
 });
@@ -28,17 +29,21 @@ massive(process.env.CONNECTIONSTRING).then(db => {
 });
 app.get("/api/getSkate", controller.getSkate);
 app.get("/api/cart", controller.getCart);
+app.get("/api/cartQuantity", controller.getQuantity);
 app.get("/api/getItem/:id", controller.getItem);
 app.get("/api/search", controller.getSearch);
 
 app.post("/api/cart", (req, res) => {
   req.session.cart.push(req.body);
+  req.session.cartQuantity++;
   res.send(req.session.cart);
 });
+app.post("/api/submitOrder", controller.submitOrder);
 app.delete("/api/cart/:id", (req, res) => {
-  let index = req.session.cart.findIndex(item => item["id"] === req.params);
+  let index = req.session.cart.findIndex(item => item.id == req.params.id);
   req.session.cart.splice(index, 1);
-  res.send(req.session.cart);
+  req.session.cartQuantity--;
+  res.send(req.session);
 });
 
 port = 3001;
