@@ -19,6 +19,7 @@ export default function reducer(state = initialState, action) {
     case GET_SEARCH: //this changes state to update css class
       return Object.assign({}, state, { search: action.payload });
     case GET_INVENTORY: // gets inventory from database based off search results. & sets search path
+    console.log(action.payload)
      return Object.assign({}, state, { inventory: action.payload, query: action.query});
      case RESET_QUERY:
     return Object.assign({}, state, { query: action.payload})

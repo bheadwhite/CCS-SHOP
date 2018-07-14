@@ -15,7 +15,8 @@ class QuickView extends Component {
         class: "",
         name: "loading..",
         price: "loading.."
-      }
+      },
+      quantity: 1
     };
   }
   
@@ -35,28 +36,47 @@ class QuickView extends Component {
   }
   render() {
     return (
-      <div className="landing">
+      <div className="quickView landing">
         <Nav />
         <Link to="/skateboards">
           <button>Back</button>
         </Link>
+        <div className="quickView-img">
         <img src={this.state.item.img} alt={this.state.item.name} />
-        <div>
-          <h5>{this.state.item.name}</h5>
         </div>
         <div>
-          <h3>${this.state.item.price}</h3>
+          <p>{this.state.item.name}</p>
+          <h3>${(this.state.item.price/100).toFixed(2)}</h3>
         </div>
-        <div>
+        <div className="quickView-addCart">
+          <h3>QTY:</h3>
+          <input type='text' value={this.state.quantity} onChange={(e)=>{this.setState({quantity: e.target.value})}}/>
           <button
             onClick={() => {
               this.addItemToCart(this.state.item.id);
               this.setCartQuantity();
             }}
           >
-            add Item to Cart
+            add to Cart
           </button>
         </div>
+        <hr />
+        <div className="quickView-sameDayMsg">
+        <p>Orders placed by 3pm ET ship out the same day.<i>(business days only)</i></p>
+        </div>
+        <hr />
+        <div className="quickView-DescriptionMsg">
+        <h3>DESCRIPTION:</h3>
+        <div>
+        <p>There's something great in the transormation of a deck themore you skate it. Whether you draw, paint, stencil your own graphic, or let your skating create its own graphic, the CCS Logo deck only gets better with time.</p>
+        </div>
+        <h3>PRODUCT FEATURES</h3>
+        <ul>
+          <li>Shape: Popsicle</li>
+          <li>Deck Construction: Traditional Maple</li>
+          </ul>
+        </div>
+        <hr />
       </div>
     );
   }

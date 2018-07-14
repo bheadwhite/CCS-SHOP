@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Navbar from "./../nav/navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {connect} from 'react-redux'
-import {setQuantity} from './../../redux/navbar'
+import { connect } from "react-redux";
+import { setQuantity } from "./../../redux/navbar";
 
 class Cart extends Component {
   constructor(props) {
@@ -25,9 +25,8 @@ class Cart extends Component {
   }
   setCartQuantity() {
     axios.get("/api/cartQuantity").then(res => {
-      this.props.setQuantity(res.data.cartQuantity)
-    }
-    )
+      this.props.setQuantity(res.data.cartQuantity);
+    });
   }
   render() {
     let subtotal = this.state.item.reduce((sub, next) => {
@@ -52,7 +51,7 @@ class Cart extends Component {
                 <button
                   onClick={() => {
                     this.removeItem(product.id);
-                    this.setCartQuantity()
+                    this.setCartQuantity();
                   }}
                 >
                   REMOVE
@@ -78,8 +77,12 @@ class Cart extends Component {
     );
   }
 }
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
-    quantity: state.navbar.quantity}
+    quantity: state.navbar.quantity
+  };
 }
-export default connect(mapStateToProps, {setQuantity})(Cart)
+export default connect(
+  mapStateToProps,
+  { setQuantity }
+)(Cart);

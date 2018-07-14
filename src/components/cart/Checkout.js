@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Navbar from "./../nav/navbar";
 import axios from "axios";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class Checkout extends Component {
   constructor() {
@@ -30,17 +31,17 @@ class Checkout extends Component {
   handleSubmit(e) {
     e.preventDefault();
   }
-  sendOrder(){
-      axios.post('/api/submitOrder', this.state).then(res => {
-          console.log(res)
-      })
+  sendOrder() {
+    axios.post("/api/submitOrder", this.state).then(res => {
+      console.log(res);
+    });
   }
   render() {
     let subtotal = this.state.order.reduce((sub, next) => {
-        return sub + next.price;
-      }, 0);
-      let grandtotal = ((subtotal + this.state.shippingMethod)/100).toFixed(2);
-      subtotal = (subtotal / 100).toFixed(2);
+      return sub + next.price;
+    }, 0);
+    let grandtotal = ((subtotal + this.state.shippingMethod) / 100).toFixed(2);
+    subtotal = (subtotal / 100).toFixed(2);
     let order = this.state.order.map((item, key) => {
       return (
         <div className="checkoutNamePrice" key={key}>
@@ -51,13 +52,13 @@ class Checkout extends Component {
       );
     });
     return (
-      <div className="landing">
+      <div className="skateboard landing">
         <Navbar />
         <div className="checkout checkoutHide">
           <h3>
             <span>1</span> shipping
           </h3>
-          <form onSubmit={this.handlesubmit}>
+          <form className="checkoutForm" onSubmit={this.handlesubmit}>
             <div>
               <label htmlFor="firstName">First Name</label>
               <input
@@ -156,7 +157,13 @@ class Checkout extends Component {
                 <span>3</span> Billing
               </h3>
               <p>Email</p>
-              <input type="text" placeholder="EMAIL" onChange={(e)=>{this.setState({email: e.target.value})}}/>
+              <input
+                type="text"
+                placeholder="EMAIL"
+                onChange={e => {
+                  this.setState({ email: e.target.value });
+                }}
+              />
               <p>Payment Information</p>
               <input
                 type="text"
@@ -186,12 +193,21 @@ class Checkout extends Component {
               </h3>
               <h4> Review Order </h4>
               <p>Subtotal: ${subtotal}</p>
-              <p>Shipping: ${(this.state.shippingMethod /100).toFixed(2)}</p>
+              <p>Shipping: ${(this.state.shippingMethod / 100).toFixed(2)}</p>
               <h3> TOTAL: ${grandtotal}</h3>
+            </div>
+            <Link to="/checkout/thankyou">
+              <div
+                className="placeOrder"
+                onClick={() => {
+                  this.sendOrder();
+                }}
+              >
+                PLACE ORDER
               </div>
-              <div className="placeOrder" onClick={()=>{this.sendOrder()}}>PLACE ORDER</div>
-              <h3> Order Details:</h3>
-              {order}
+            </Link>
+            <h3> Order Details:</h3>
+            {order}
           </form>
         </div>
         {/* checkout */}

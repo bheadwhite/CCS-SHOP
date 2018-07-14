@@ -8,7 +8,6 @@ module.exports = {
       });
   },
   getCart: (req, res, next) => {
-    console.log(req.session.cartQuantity);
     res.send(req.session.cart);
   },
   getQuantity: (req, res, next) => {
@@ -23,12 +22,20 @@ module.exports = {
       });
   },
   getSearch: (req, res, next) => {
+    console.log('backend reached. sending query to db')
     const db = req.app.get("db");
     db.search([req.query.q + "%"])
       .then(result => {
+        console.log('sending data....');
         res.status(200).send(result);
       })
       .catch(err => res.status(500).send(err));
+  },
+  recentThree: (req, res, next) => {
+    const db = req.app.get("db");
+    db.recent().then(result => {
+      res.send(result);
+    });
   },
   submitOrder: (req, res, next) => {
     const db = req.app.get("db");
@@ -61,6 +68,16 @@ module.exports = {
       })
       .catch(err => {
         res.send(err);
+      });
+  },
+  user: (req, res, next) => {
+    const db = req.app.get("db");
+    db.user()
+      .then(result => {
+        res.send(result);
+      })
+      .catch(err => {
+        res.status(500).send(err);
       });
   }
 };
