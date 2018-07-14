@@ -8,19 +8,19 @@ class Checkout extends Component {
   constructor() {
     super();
     this.state = {
-      order: [],
-      shippingMethod: "",
       firstName: "",
       lastName: "",
-      email: "",
       address: "",
       city: "",
       state: "",
       zip: "",
+      email: "",
+      shippingMethod: "",
       cardNumber: "",
       expiration: "",
       cvv: "",
-      grandTotal: 0
+      grandTotal: 0,
+      order: []
     };
   }
   componentDidMount() {
@@ -47,7 +47,7 @@ class Checkout extends Component {
         <div className="checkoutNamePrice" key={key}>
           <img src={item.img} alt={item.name} />
           <h5> {item.name}</h5>
-          <h2> ${item.price}</h2>
+          <h2> ${(item.price / 100).toFixed(2)}</h2>
         </div>
       );
     });

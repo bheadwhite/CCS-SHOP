@@ -48,7 +48,7 @@ class Cart extends Component {
             </div>
             <div>
               <div>
-                <button
+                <button className='removeButton'
                   onClick={() => {
                     this.removeItem(product.id);
                     this.setCartQuantity();
@@ -65,7 +65,7 @@ class Cart extends Component {
       );
     });
     return (
-      <div className="landing">
+      <div className="landing cart">
         <Navbar />
         <div>SHOPPING CART</div>
         {products}

@@ -31,10 +31,10 @@ app.get("/api/getSkate", controller.getSkate);
 app.get("/api/cart", controller.getCart);
 app.get("/api/getItem/:id", controller.getItem);
 app.get("/api/search", controller.getSearch);
-// app.get("/api/lastThree", controller.recentThree)
+app.get("/api/lastThree", controller.recentThree)
 app.get("/api/cartQuantity", controller.getQuantity);
 
-app.post("/api/cart", (req, res) => {
+app.put("/api/cart", (req, res) => {
   if (req.session.cart.findIndex(item => item.id === req.body.id) === -1) {
     req.session.cart.push(req.body);
     req.session.cartQuantity++;
@@ -43,7 +43,7 @@ app.post("/api/cart", (req, res) => {
   }
   res.send(req.session.cart);
 });
-// app.post("/api/submitOrder", controller.submitOrder);
+app.post("/api/submitOrder", controller.submitOrder);
 app.post("/api/user", controller.user);
 app.delete("/api/cart/:id", (req, res) => {
   let index = req.session.cart.findIndex(item => item.id == req.params.id);

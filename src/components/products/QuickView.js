@@ -26,7 +26,7 @@ class QuickView extends Component {
     });
   }
   addItemToCart(id) {
-    axios.post(`/api/cart`, this.state.item);
+    axios.put(`/api/cart`, this.state.item);
   }
   setCartQuantity() {
     axios.get("/api/cartQuantity").then(res => {
@@ -35,12 +35,15 @@ class QuickView extends Component {
     )
   }
   render() {
+    console.log(this.state.quantity)
     return (
       <div className="quickView landing">
         <Nav />
+        <div className="quickView-backButton">
         <Link to="/skateboards">
           <button>Back</button>
         </Link>
+        </div>
         <div className="quickView-img">
         <img src={this.state.item.img} alt={this.state.item.name} />
         </div>

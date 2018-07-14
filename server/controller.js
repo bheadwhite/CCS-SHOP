@@ -22,11 +22,9 @@ module.exports = {
       });
   },
   getSearch: (req, res, next) => {
-    console.log('backend reached. sending query to db')
     const db = req.app.get("db");
     db.search([req.query.q + "%"])
       .then(result => {
-        console.log('sending data....');
         res.status(200).send(result);
       })
       .catch(err => res.status(500).send(err));
@@ -42,12 +40,6 @@ module.exports = {
     let totalPrice = req.body.order.reduce((total, nextValue) => {
       return total + nextValue.price;
     }, 0);
-    let products = [];
-    for (let i = 0; i < req.body.order.length; i++) {
-      let idValue = req.body.order[i].id;
-      products.push(idValue);
-    }
-    products = products.join(" ");
     db.submit([
       req.body.firstName,
       req.body.lastName,
@@ -60,10 +52,14 @@ module.exports = {
       req.body.cardNumber,
       req.body.expiration,
       req.body.cvv,
-      products,
       totalPrice
     ])
       .then(result => {
+        console.log(result[0].orderid);
+        req.session.cart.forEach(product => {
+          console.log(result[0].orderid)
+          db.lookup_tableSubmit([result[0].orderid, product.id]);
+        });
         res.send("ok");
       })
       .catch(err => {
