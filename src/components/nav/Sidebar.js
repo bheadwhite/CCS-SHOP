@@ -24,7 +24,7 @@ function Sidebar(props) {
         />
         <strong>Log In / Sign Up</strong>
       </div>
-      <Link to="/skateboards" onClick={()=>{setMenu(!props.menu)}}><div className="menu">
+      <Link to="/api/skateboards" onClick={()=>{setMenu(!props.menu)}}><div className="menu">
         <strong>Skateboards</strong>
       </div></Link>
       <div className="menu">

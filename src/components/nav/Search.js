@@ -10,28 +10,28 @@ class Search extends Component {
       search: ""
     };
   }
+
   updateInventory() {
     axios.get(`/api/search?q=${this.state.search}`).then(results => {
-      this.props.getInventory(results.data, this.state.search);
-
+      this.props.getInventory(results.data);
     });
   }
-  handleSubmit(e){
-    e.preventDefault()
+  handleSubmit(e) {
+    e.preventDefault();
   }
   render() {
     let up = this.props.search ? "searchContainer" : "searchContainer up";
     return (
-      <div>
-          <form className={up} onSubmit={this.handleSubmit}>
+      <div className={up}>
+        <form onSubmit={this.handleSubmit}>
           <div className="left">
-              <input type='image'
-                onClick={() => {
-                  this.updateInventory(this.state.search);
-                }}
-                src="https://cdn.ccs.com/skin/frontend/enterprise/mobile/images/bkg_search.1529467876.png"
-                alt="search logo"
-              />
+            <input type='image'
+              onClick={() => {
+                this.updateInventory(this.state.search);
+              }}
+              src="https://cdn.ccs.com/skin/frontend/enterprise/mobile/images/bkg_search.1529467876.png"
+              alt="search logo"
+            />
           </div>
           <input
             type="text"
@@ -41,16 +41,16 @@ class Search extends Component {
               this.setState({ search: e.target.value });
             }}
           />
-        <div className="right">
-          <input type='image'
-            onClick={() => {
-              this.props.onClick(!this.props.search);
-              this.setState({ search: "" });
-            }}
-            src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/menu-button-close.1529467876.png"
-            alt="exit"
-          />
-        </div>
+          <div className="right">
+            <img
+              onClick={() => {
+                this.props.onClick(!this.props.search);
+                this.setState({ search: "" });
+              }}
+              src="https://cdn.ccs.com/skin/frontend/enterprise/mobileshopccs/images/menu-button-close.1529467876.png"
+              alt="exit"
+            />
+          </div>
         </form>
       </div>
     );
@@ -58,11 +58,10 @@ class Search extends Component {
 }
 function mapStateToProps(state) {
   return {
-    inventory: state.navbar.inventory
+    inventory: state.inventory
   };
 }
 export default connect(
   mapStateToProps,
   { getInventory }
 )(Search);
-

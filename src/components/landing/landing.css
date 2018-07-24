@@ -8,19 +8,16 @@ a:visited {
   text-decoration: none;
   color: black;
 }
-.checkoutForm input[type="text"] {
-  font-size: 25px;
-  border-bottom: 1px solid black;
-}
 body {
   display: block;
 }
 .landing {
   display: flex;
+  height: 100vh;
   justify-content: space-around;
   padding: 10px;
   flex-wrap: wrap;
-  margin-top: 60px;
+  margin-top: 61px;
 }
 
 .item {
@@ -54,9 +51,7 @@ p {
 }
 
 /* navbar */
-.navbar {
-  height: 87px;
-}
+
 .headerContainer {
   display: flex;
   justify-content: space-between;
@@ -67,7 +62,6 @@ p {
   border-bottom: 1px solid #00a4f0;
   box-sizing: border-box;
   width: 100%;
-  z-index: 5;
 }
 .headerContainer div {
   display: flex;
@@ -95,13 +89,12 @@ p {
 }
 
 /* search */
-form.searchContainer.up {
+.App div.searchContainer.up {
   top: -100px;
-  z-index: 6;
 }
 
 .searchContainer {
-  height: 69px;
+  height: 70px;
   display: flex;
   background: white;
   position: fixed;
@@ -111,7 +104,6 @@ form.searchContainer.up {
   border-bottom: 1px solid #00a4f0;
   justify-content: space-between;
   transition: 0.5s;
-  z-index: 6;
 }
 .searchContainer img {
   max-width: 25px;
@@ -124,10 +116,6 @@ form.searchContainer.up {
   font-size: 20px;
 }
 
-form.searchContainer div.left, form.searchContainer div.right{
-  display: flex;
-  justify-content: 
-}
 /* banners */
 
 .shippingBanner,
@@ -238,7 +226,7 @@ ul {
   justify-content: space-between;
   height: 150px;
   align-items: center;
-  border: 2px solid #00a4f0;
+  border: 2px solid blue;
   padding: 10px;
 }
 .checkoutPrice {
@@ -252,175 +240,8 @@ ul {
   text-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center
 }
 .checkoutNamePrice img {
   max-height: 100%;
-}
-/* cart  */
-div.cart {
-  display: flex;
-  flex-direction: column;
-}
-div.cart button {
-  padding: 10px 15px;
-  color: white;
-  background: #00a4f0;
-  border: none;
-}
-div.cart button.removeButton {
-  padding: 4px 10px;
-  color: white;
-  background: #00a4f0;
-  border: none;
-  width: 140px;
-}
-/* quickview */
-div.quickView {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 10px;
-  /* flex-wrap: wrap; */
-  margin-top: 60px;
-}
-div.quickView-img {
-  width: 100vw;
-  min-width: 100%;
-  min-height: 370px;
-}
-div.quickView-img img {
-  max-width: 440px;
-  max-height: 100%;
-}
-div.quickView-DescriptionMsg ul {
-  display: flex;
-  flex-direction: column;
-}
-div.quickView-DescriptionMsg {
-  display: flex;
-  flex-direction: column;
-  flex: wrap;
-}
-div.quickView-DescriptionMsg div {
-  min-width: 100%;
-  min-height: 100%;
-}
-div.quickView-addCart input[type='text']{
-width: 60px;
-height: 64px;
-font-size: 25px;
-text-align: center;
-}
-div.quickView-addCart button {
-  height: 68px;
-  width: 245px;
-  font-size: 20px;
-  text-transform: uppercase;
-  font-weight: 900; 
-  color: white;
-  background: #00a4f0;
-  border: none;
-}
-/* placeOrder */
-
-div.placeOrder {
-  background: #00a4f0;
-  height: 40px;
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-shadow: -0.3px 0.3px black;
-  margin: 0 auto;
-}
-/* mediaQueries */
-.desktop {
-  display: none;
-}
-.searchIcon {
-  position: relative;
-  right: 26px;
-}
-@media screen and (min-width: 475px) {
-  .mobile {
-    display: none;
-  }
-  .desktop {
-    display: inline;
-  }
-  .desktop.navbarBanner {
-    background: #00a4f0;
-    height: 70px;
-    display: block;
-    color: white;
-    width: 100vw;
-    display: flex;
-    justify-content: space-around
-  }
-  .navbarBanner div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .navbarBanner h3 {
-    margin: 5px;
-    min-height: 100%;
-    display: flex;
-    align-items: center;
-    text-transform: uppercase
-  }
-  .navbarBanner form {
-    margin: auto 0;
-  }
-  img.desktop.cart {
-    margin-right: 12px;
-  }
-  .jumbotron img{
-    width: 100vw;
-    min-width: 100%
-  }
-  div.jumbotron.desktop {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  /* quickView */
-  div.quickView {
-    align-items: center;
-  }
-  div.quickView-img {
-    display: flex;
-  }
-  div.quickView-addCart button {
-    margin-left: 40px;
-  }
-  div.quickView-backButton button {
-    padding: 10px 15px;
-    color: white;
-    background: #00a4f0;
-    border: none;
-  }
-  .quickView-backButton {
-    display: block;
-    width: 100%;
-    padding-left: 150px;
-  }
-  .quickView-DescriptionMsg {
-    margin: 10px 35px;
-  }
-  .quickView-sameDayMsg {
-    margin: 5px 34px;
-  }
-  div#images.images img {
-    min-height: 550px;
-  }
-  div#images img {
-    min-height: 500px;
-  }
-  ul.logos {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-  }
 }

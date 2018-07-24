@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Filter(){
     return (
-        <div className="filter mobile">
+        <div className="filter">
         <div>
             <p>Complete Skateboards</p>
             </div>

@@ -6,7 +6,7 @@ create table inventory (
     brand varchar(20) not null,
     price integer,
     img text not null
-)
+);
 -- complete skateboards
 insert into inventory (
     name, class, type, brand, price, img
@@ -215,14 +215,14 @@ insert into inventory (
     'Plan B',
     9995,
     'https://cdn.ccs.com/media/catalog/product/cache/4/small_image/235x/9df78eab33525d08d6e5fb8d27136e95/A/Q/AQ75522-c.1529145571.jpg'
-)
+);
 
 
 
 -- Decks only
 
 insert into inventory (
-    name, class, type, brand, price, img, was
+    name, class, type, brand, price, img
 ) values (
     'Welcome Loo Dood Nora on Wicked Queen Skateboard Deck - White - 8.60"',
     'skateboards',
@@ -447,7 +447,7 @@ insert into inventory (
     'Baker',
     5495,
     'https://cdn.ccs.com/media/catalog/product/cache/4/small_image/235x/9df78eab33525d08d6e5fb8d27136e95/A/Q/AQAF8AC-1.1516961992.jpg'
-)
+);
 
 
 --Cruisers Only
@@ -657,12 +657,6 @@ insert into inventory (
     'Prism',
     14495,
     'https://cdn.ccs.com/media/catalog/product/cache/4/small_image/235x/9df78eab33525d08d6e5fb8d27136e95/a/r/artist-mash-bottom.1498249551.jpg'
-)
+);
 
 --Wheels
-
-insert into inventory (
-    name, class, type, brand, price, img
-) values (
-
-)

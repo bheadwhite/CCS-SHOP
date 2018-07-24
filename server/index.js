@@ -19,7 +19,6 @@ app.use(
 app.use((req, res, next) => {
   if (!req.session.cart) {
     req.session.cart = [];
-    req.session.cartQuantity = 0;
   }
   next();
 });
@@ -31,25 +30,16 @@ app.get("/api/getSkate", controller.getSkate);
 app.get("/api/cart", controller.getCart);
 app.get("/api/getItem/:id", controller.getItem);
 app.get("/api/search", controller.getSearch);
-app.get("/api/lastThree", controller.recentThree)
-app.get("/api/cartQuantity", controller.getQuantity);
 
-app.put("/api/cart", (req, res) => {
-  if (req.session.cart.findIndex(item => item.id === req.body.id) === -1) {
-    req.session.cart.push(req.body);
-    req.session.cartQuantity++;
-  } else {
-    res.send(req.session.cart);
-  }
+app.post("/api/cart", (req, res) => {
+  req.session.cart.push(req.body);
   res.send(req.session.cart);
 });
-app.post("/api/submitOrder", controller.submitOrder);
-app.post("/api/user", controller.user);
+//put request to update quantities
 app.delete("/api/cart/:id", (req, res) => {
-  let index = req.session.cart.findIndex(item => item.id == req.params.id);
+  let index = req.session.cart.findIndex(item => item["id"] === req.params);
   req.session.cart.splice(index, 1);
-  req.session.cartQuantity--;
-  res.send(req.session);
+  res.send(req.session.cart);
 });
 
 port = 3001;
